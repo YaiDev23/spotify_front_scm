@@ -1,9 +1,10 @@
 import { X, Music } from "lucide-react"
 // import { button } from "@/components/ui/button"
+import Banner from "../../assets/img.png"
 
 export const Landing = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-purple-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-pink-200 via-[#121212] to-[#121212] relative ">
       {/* Blue notification bar */}
       <div className="bg-blue-500 text-white text-center py-2 px-4 text-sm relative">
         <span className="underline cursor-pointer">Colombia (English)</span>
@@ -52,51 +53,49 @@ export const Landing = () => {
       </header>
 
       {/* Main Content */}
-      <main className="relative">
+      <main className="relative mb-20">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="text-white space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  Escucha sin límites.
-                  <br />
-                  Prueba 1 mes de Premium
-                  <br />
-                  Individual por $ 0.
+                  Disfruta mucho más de tu música con Premium Individual.
                 </h1>
-                <p className="text-lg text-gray-300">Después, solo cuesta $ 18.500 por mes. Cancela cuando quieras.</p>
+                <p>
+                  Disfruta de música sin interrupciones con Spotify Premium.
+                </p>
+                <p>
+                  A partir de solo $ 18.500. Cancela cuando quieras.
+                </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   size="lg"
-                  className="bg-[#FFD2D7] hover:bg-[#FFD2D7] text-black font-semibold px-8 py-6 rounded-full text-lg"
+                  className="bg-[#FFD2D7] hover:bg-[#FFD2D7] text-black px-8 py-3 rounded-full text-base font-bold"
                 >
-                  Empezar
+                  Obtener Premium Individual
                 </button>
                 <button
                   variant="outline"
                   size="lg"
-                  className="border-white text-white bg-black hover:bg-white hover:text-black px-8 py-6 rounded-full text-lg "
+                  className="border border-gray-500 text-white bg-black  px-8 py-3 rounded-full text-base font-bold "
                 >
                   Ver todos los planes
                 </button>
               </div>
 
-              <div className="text-xs text-gray-400 max-w-md">
-                $ 0 por 1 mes. Después, cuesta $ 18.500 al mes. La oferta solo está disponible si aún no probaste
-                Premium.{" "}
+              <div className="text-xs text-white max-w-md">
                 <a href="#" className="underline hover:text-white">
-                  Se aplican Términos
+                  Se aplican Términos.
                 </a>
-                .
               </div>
             </div>
 
             {/* Right Content - Album Grid */}
             <div className="hidden lg:block">
-              <div className="grid grid-cols-4 gap-2 transform rotate-12 scale-110">
+              <div className="grid grid-cols-4 gap-2 transform hidden rotate-340 scale-110">
                 {/* Row 1 */}
                 <div className="bg-blue-400 aspect-square rounded-lg overflow-hidden">
                   <img
@@ -191,18 +190,6 @@ export const Landing = () => {
           </div>
         </div>
 
-        {/* Floating Musical Notes */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-          <div className="flex items-center space-x-8 text-white/30">
-            <Music size={24} className="animate-bounce" style={{ animationDelay: "0s" }} />
-            <Music size={20} className="animate-bounce" style={{ animationDelay: "0.2s" }} />
-            <Music size={28} className="animate-bounce" style={{ animationDelay: "0.4s" }} />
-            <Music size={16} className="animate-bounce" style={{ animationDelay: "0.6s" }} />
-            <Music size={24} className="animate-bounce" style={{ animationDelay: "0.8s" }} />
-            <Music size={20} className="animate-bounce" style={{ animationDelay: "1s" }} />
-            <Music size={18} className="animate-bounce" style={{ animationDelay: "1.2s" }} />
-          </div>
-        </div>
 
         {/* Spotify Logo Circle at Bottom */}
         <div className="absolute bottom-8 right-8">
@@ -217,6 +204,9 @@ export const Landing = () => {
           </div>
         </div>
       </main>
+      <div className=" h-20 absolute mt-7 bottom-0 left-0 right-0 flex items-center justify-center">
+        <img src={Banner} alt="" />
+      </div>
     </div>
   )
 }
