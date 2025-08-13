@@ -1,12 +1,6 @@
 # Use Node.js 20 Alpine for compatibility with Vite 7.0.0
 FROM node:20-alpine
 
-# Install necessary system dependencies for building native modules
-RUN apk add --no-cache python3 make g++
-
-# Set working directory
-WORKDIR /app
-
 # Copy package files
 COPY package.json yarn.lock ./
 
