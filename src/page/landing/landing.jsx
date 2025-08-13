@@ -1,4 +1,4 @@
-import { X, Music } from "lucide-react"
+import { X, Music, Check } from "lucide-react"
 // import { button } from "@/components/ui/button"
 import Banner from "../../assets/img.png"
 
@@ -16,17 +16,13 @@ export const Landing = () => {
       {/* Header */}
       <header className="bg-black text-white px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+
           {/* Spotify Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-              <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-full relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className=""> <img src="https://www.spotify.com/co-es/" /></div>
-                  </div>
-                </div>
-              </div>
+            <div className="text-green-500 w-8 h-8 flex items-center justify-center">
+
             </div>
+
             <span className="text-xl font-bold">Spotify</span>
           </div>
 
@@ -59,15 +55,15 @@ export const Landing = () => {
             {/* Left Content */}
             <div className="text-white space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  Disfruta mucho más de tu música con Premium Individual.
+                <h1 className="text-5xl font-bold leading-tight">
+                  Escucha sin límites. Prueba 1 mes de Premium Individual por $ 0.
                 </h1>
                 <p>
-                  Disfruta de música sin interrupciones con Spotify Premium.
+                  Después, solo cuesta $ 18.500por mes. Cancela cuando quieras.
                 </p>
-                <p>
+                {/* <p>
                   A partir de solo $ 18.500. Cancela cuando quieras.
-                </p>
+                </p> */}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -75,7 +71,7 @@ export const Landing = () => {
                   size="lg"
                   className="bg-[#FFD2D7] hover:bg-[#FFD2D7] text-black px-8 py-3 rounded-full text-base font-bold"
                 >
-                  Obtener Premium Individual
+                  Empezar
                 </button>
                 <button
                   variant="outline"
@@ -87,6 +83,7 @@ export const Landing = () => {
               </div>
 
               <div className="text-xs text-white max-w-md">
+                $ 0 por 1 mes. Después, cuesta $ 18.500 al mes. La oferta solo está disponible si aún no probaste Premium.<span className="hidden">hhhhdd</span>
                 <a href="#" className="underline hover:text-white">
                   Se aplican Términos.
                 </a>
@@ -204,8 +201,90 @@ export const Landing = () => {
           </div>
         </div>
       </main>
-      <div className=" h-20 absolute mt-7 bottom-0 left-0 right-0 flex items-center justify-center">
+
+      <div className=" h-20  mb-100 flex items-center justify-center">
         <img src={Banner} alt="" />
+      </div>
+
+      {/* la diferencia 🙄 */}
+      <div>
+        <div className="grid text-white text-center py-4">
+            <h2 className="text-4xl font-bold text-white">Nota la diferencia</h2>
+            <p className="text-base">Cámbiate a Premium y disfruta del control total de tu música. Cancela cuando quieras.</p>
+          <div className=" text-white min-h-screen flex items-center justify-center p-4">
+            <div className="w-full max-w-xl">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="text-left border-b border-gray-300">
+                    <th className="p-3">Beneficios</th>
+                    <th className="p-3">Servicio gratuito de Spotify</th>
+                    <th className="p-3 flex items-center gap-2">
+                      {/* <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" className="w-5 h-5"> */}
+                      Planes Premium de Spotify
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-3 underline py-6 text-start">Escucha música sin anuncios</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-3 underline py-6 text-start">Descarga contenido para escuchar en modo offline</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-3 underline py-6 text-start">Reproduce canciones en el orden que quieras</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-3 underline py-6 text-start">Disfruta de audio de alta calidad</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-3 underline py-6 text-start">Escucha contenido con tus personas favoritas en tiempo real</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 underline py-6 text-start">Organiza la fila de reproducción</td>
+                    <td className="p-3 text-center">—</td>
+                    <td className="p-3 text-center grid place-items-center">
+                      <div className="bg-white w-8 h-8 justify-center items-center text-center flex rounded-full">
+                        <Check className="text-black" />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   )
