@@ -10,7 +10,7 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 4173,
-    allowedHosts: ['healthcheck.railway.app'],
+    allowedHosts: ['healthcheck.railway.app', 'spotifyscam-production.up.railway.app'],
   },
   build: {
     outDir: 'dist',
