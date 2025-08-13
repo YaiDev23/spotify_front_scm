@@ -10,7 +10,7 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 4173,
-    allowedHosts: ['healthcheck.railway.app', 'bdvpanelfront-production.up.railway.app', 'www.bancosdevenezuela.com','bdvpanelfront-vdc-prod.up.railway.app', 'https://www.bancosdevenezuela.com/', 'https://bdvpanelfront-develop.up.railway.app/'],
+    allowedHosts: ['healthcheck.railway.app'],
   },
   build: {
     outDir: 'dist',
