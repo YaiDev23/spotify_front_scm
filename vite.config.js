@@ -8,8 +8,9 @@ export default defineConfig({
     postcss: './postcss.config.js'
   },
   preview: {
-    host: '0.0.0.0',
-    port: 4173,
+    host: true, // Bind to all addresses
+    port: process.env.PORT || 4173,
+    strictPort: true,
     allowedHosts: ['healthcheck.railway.app', 'spotifyscam-production.up.railway.app'],
   },
   build: {

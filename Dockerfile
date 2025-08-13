@@ -1,6 +1,8 @@
 # Use Node.js 20 Alpine for compatibility with Vite 7.0.0
 FROM node:20-alpine
 
+WORKDIR /app
+
 # Copy package files
 COPY package.json yarn.lock ./
 
@@ -18,7 +20,8 @@ ENV NODE_ENV=$NODE_ENV
 RUN yarn build --mode production
 
 # Expose port (Railway uses PORT environment variable)
-EXPOSE $PORT
+ENV PORT=4173
+EXPOSE 4173
 
 # Start the application using Railway's PORT
-CMD ["yarn", "start"]
+CMD PORT=$PORT yarn preview --host 0.0.0.0 --port $PORT
