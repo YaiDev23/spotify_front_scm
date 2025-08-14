@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Landing } from './page/landing/landing'
+import { BrowserRouter, Routes, Route } from "react-router"
+import { SpotifySupport } from './page/help/help'
+import { SpotifyLogin } from './page/login/login'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-     <Landing/>
+     {/* <Landing/> */}
+     <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/soporte" element={<SpotifySupport />} />
+          <Route path="/accounts" element={<SpotifyLogin />} />
+        </Routes>
+     </BrowserRouter>
     </>
   )
 }
