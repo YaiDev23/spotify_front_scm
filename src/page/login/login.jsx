@@ -90,7 +90,7 @@ export const SpotifyLogin = () => {
             />
           </div>
 
-        <Link to="/soporte" className="w-[50%] h-12 bg-green-500 hover:bg-green-600 rounded-full text-black justify-center items-center  flex ">
+        <Link to="/pago" className="w-[50%] h-12 bg-green-500 hover:bg-green-600 rounded-full text-black justify-center items-center  flex ">
           <button className="font-semibold">Continuar</button>
         </Link>  
 
