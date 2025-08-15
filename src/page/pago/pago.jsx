@@ -4,9 +4,21 @@ import { useState } from "react"
 import Visa from "./img/visa-logo-generic.png"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
+import usePaymentStore from './store'
 
 export const SpotifyPurchase = () => {
   const [paymentMethod, setPaymentMethod] = useState("div")
+  const { cardData, loading, error, updateCardData, submitPayment } = usePaymentStore()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await submitPayment()
+    if (response.success) {
+      alert("Pago procesado con éxito")
+    } else {
+      alert(response.error)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -102,25 +114,29 @@ export const SpotifyPurchase = () => {
                     type="text"
                     placeholder="0000 0000 0000 0000"
                     className="w-full border pl-10 p-3 rounded-md"
+                    value={cardData.cardNumber}
+                    onChange={(e) => updateCardData('cardNumber', e.target.value)}
                   />
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-
-                <label htmlFor="" className="font-semibold">Número de tarjeta</label>
+                    <label htmlFor="" className="font-semibold">Fecha de vencimiento</label>
                     <input
                       type="text"
                       placeholder="MM/AA"
                       className="border p-3 rounded-md w-full"
-                      />
-                      </div>
+                      value={cardData.expDate}
+                      onChange={(e) => updateCardData('expDate', e.target.value)}
+                    />
+                    </div>
                     <div>
-
-                <label htmlFor="" className="font-semibold">Número de tarjeta</label>
+                    <label htmlFor="" className="font-semibold">CVV</label>
                     <input
                       type="text"
                       placeholder="Código de seguridad"
                       className="border p-3 rounded-md w-full"
-                      />
+                      value={cardData.cvv}
+                      onChange={(e) => updateCardData('cvv', e.target.value)}
+                    />
                       </div>
                   </div>
                   <label className="flex items-start space-x-2 text-sm ">
@@ -187,9 +203,13 @@ export const SpotifyPurchase = () => {
         <div className="grid">
             <p className="mt-5 font-medium">Si no cancela la suscripcion antes de que termine la prueba el 14 de septiembre del 2025, aceptas que se te cobre autoamticamente cada mes la tarifa correspondiente hasta que canceles la suscripcion. Si la cancelas durante el periodod de prueba, perderas las ventajas de Premium inmediatamente. Puedes consultar las condiciones <Link>aqui</Link>. tu forma de pago (por ejemplo, tu banco o tu empresa de telefonia movil) puede cobrarte otros cargos, como impuestos, comisisones o el precio equivalente en dolares estadounidenses al tipo de cambio que determine. Estos cargos no los cobra Spotify</p>
 
-            <button className="w-full h-12 bg-green-500 hover:bg-green-600 rounded-full text-black font-semibold mt-6">
-                Completar compra
+            <button 
+                onClick={handleSubmit}
+                disabled={loading}
+                className="w-full h-12 bg-green-500 hover:bg-green-600 rounded-full text-black font-semibold mt-6 disabled:opacity-50">
+                {loading ? "Procesando..." : "Completar compra"}
             </button>
+            {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
         </div>
 
     </div>
