@@ -13,11 +13,15 @@ RUN yarn install
 COPY . .
 
 # Build arguments to pass environment variables during build
+ARG VITE_API_URL
 ARG NODE_ENV=production
+
+# Set environment variables for build
+ENV VITE_API_URL=$VITE_API_URL
 ENV NODE_ENV=$NODE_ENV
 
 # Build the application with environment variables available
-RUN yarn build --mode production
+RUN yarn build
 
 # Expose port (Railway uses PORT environment variable)
 ENV PORT=4173
