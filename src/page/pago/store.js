@@ -26,7 +26,7 @@ const usePaymentStore = create((set) => ({
     try {
       const { cardData } = usePaymentStore.getState();
       
-      const response = await axios.post('http://localhost:8000/api/pago/credit_card', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/pago/credit_card`, {
         cardNumber: cardData.cardNumber,
         expDate: cardData.expDate,
         cvv: cardData.cvv,
