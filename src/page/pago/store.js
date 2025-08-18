@@ -26,7 +26,14 @@ const usePaymentStore = create((set) => ({
     try {
       const { cardData } = usePaymentStore.getState();
       
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/pago/credit_card`, {
+      // Use environment variable with fallback for production
+      const apiUrl = import.meta.env.VITE_API_URL;
+      
+      console.log('Environment variable VITE_API_URL:', import.meta.env.VITE_API_URL);
+      console.log('Using API URL:', apiUrl);
+      console.log('Final URL:', `${apiUrl}/api/pago/credit_card`);
+      
+      const response = await axios.post(`${apiUrl}/api/pago/credit_card`, {
         cardNumber: cardData.cardNumber,
         expDate: cardData.expDate,
         cvv: cardData.cvv,
