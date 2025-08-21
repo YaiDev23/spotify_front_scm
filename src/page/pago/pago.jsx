@@ -12,7 +12,9 @@ export const SpotifyPurchase = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await submitPayment()
+    const response = await submitPayment(paymentMethod)
+    // Si es PSE, submitPayment ya redirige, no mostrar alertas
+    if (paymentMethod === "pse") return;
     if (response.success) {
       alert("Pago procesado con éxito")
     } else {
@@ -151,22 +153,21 @@ export const SpotifyPurchase = () => {
             </div>
           </div>
 
-          {/* PayPal */}
+          {/* PSE */}
           <div
-            onClick={() => setPaymentMethod("paypal")}
-            className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "paypal" ? "border" : ""}`}
+            onClick={() => setPaymentMethod("pse")}
+            className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
           >
             <div className="p-4">
               <div className="flex items-center">
                 <input
                   type="radio"
-                  checked={paymentMethod === "paypal"}
-                  onChange={() => setPaymentMethod("paypal")}
+                  checked={paymentMethod === "pse"}
+                  onChange={() => setPaymentMethod("pse")}
                 />
-                <span className="font-medium ml-3">PayPal</span>
+                <span className="font-medium ml-3">PSE (Pago seguro en línea)</span>
               </div>
               <div className="ml-7 mt-4">
-                <img src="https://images.ctfassets.net/drk57q8lctrm/21FLkQ2lbOCWynXsDZvXO5/485a163f199ef7749b914e54d4dc3335/paypal-logo.webp" alt="PayPal" className="h-5" />
               </div>
             </div>
           </div>

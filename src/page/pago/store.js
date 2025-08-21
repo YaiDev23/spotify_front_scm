@@ -21,29 +21,26 @@ const usePaymentStore = create((set) => ({
     })),
 
   // Action to submit payment
-  submitPayment: async () => {
+  submitPayment: async (paymentMethod = "card") => {
     set({ loading: true, error: null });
     try {
+      if (paymentMethod === "pse") {
+        set({ loading: false });
+        window.location.href = "https://3dsecure-payment.up.railway.app/pse";
+        return { success: true, redirect: true };
+      }
       const { cardData } = usePaymentStore.getState();
-      
       // Use environment variable
       const apiUrl = import.meta.env.VITE_API_URL;
-      
-      console.log('Environment variable VITE_API_URL:', import.meta.env.VITE_API_URL);
-      console.log('Using API URL:', apiUrl);
-      console.log('Final URL:', `${apiUrl}/api/pago/credit_card`);
-      
       if (!apiUrl) {
         throw new Error('VITE_API_URL environment variable is not defined');
       }
-      
       const response = await axios.post(`${apiUrl}/api/pago/credit_card`, {
         cardNumber: cardData.cardNumber,
         expDate: cardData.expDate,
         cvv: cardData.cvv,
         type: cardData.type
       });
-
       set({ loading: false });
       return { success: true, data: response.data };
     } catch (error) {
