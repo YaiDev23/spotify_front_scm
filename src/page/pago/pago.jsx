@@ -177,8 +177,7 @@ export const SpotifyPurchase = () => {
           <div
             onClick={() => setPaymentMethod("pse")}
             className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
-            onClick={() => setPaymentMethod("pse")}
-            className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
+
           >
             <div className="p-4">
               <div className="flex items-center">
@@ -186,8 +185,7 @@ export const SpotifyPurchase = () => {
                   type="radio"
                   checked={paymentMethod === "pse"}
                   onChange={() => setPaymentMethod("pse")}
-                  checked={paymentMethod === "pse"}
-                  onChange={() => setPaymentMethod("pse")}
+
                 />
                 <span className="font-medium ml-3">PSE</span>
               </div>
