@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Visa from "./img/visa-logo-generic.png"
+import PSELogo from "./img/pse.png"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
 import usePaymentStore from './store'
@@ -197,7 +198,7 @@ export const SpotifyPurchase = () => {
                 <span className="font-medium ml-3">PSE</span>
               </div>
               <div className="ml-7 mt-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/PSE_logo.png" alt="PSE" className="h-5" />
+                <img src={PSELogo} alt="PSE" className="h-5" />
               </div>
               {/* Formulario visible solo si está seleccionado */}
               {paymentMethod === "pse" && (
