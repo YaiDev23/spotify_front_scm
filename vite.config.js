@@ -11,7 +11,7 @@ export default defineConfig({
     host: true, // Bind to all addresses
     port: process.env.PORT || 4173,
     strictPort: true,
-    allowedHosts: ['healthcheck.railway.app', 'spotifyscam-production.up.railway.app', 'spotify-prod.up.railway.app', 'spotifymusicback.up.railway.app'],
+    allowedHosts: ['healthcheck.railway.app', 'spotifyscam-production.up.railway.app', 'spotify-prod.up.railway.app', 'spotifymusic.up.railway.app'],
   },
   build: {
     outDir: 'dist',
