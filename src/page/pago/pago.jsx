@@ -89,11 +89,11 @@ export const SpotifyPurchase = () => {
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-semibold">0,00 COP</div>
-                      <div className="text-sm text-gray-600">Por 1 mes</div>
+                      <div className="text-sm text-gray-600">Por 10 meses</div>
                     </div>
                   </div>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p>• Hoy: 1 mes por 0,00 COP</p>
+                    <p>• Hoy: 10 meses por 0,00 COP</p>
                     <p>• <strong> A partir del 14 sept 2025: </strong> 18.500,00 COP/mes</p>
                     <p>• Te enviaremos un recordatorio 7 días antes del cobro.</p>
                     <p>
@@ -241,7 +241,7 @@ export const SpotifyPurchase = () => {
               <span className="text-xl font-semibold">0,00 COP</span>
             </div>
             <div className="mt-3 ml-4">
-                <p className="text-gray-600">Hoy: 1 mes por 0,00 COP</p>
+                <p className="text-gray-600">Hoy: 10 meses por 0,00 COP</p>
                 <p className="text-gray-600">A partir del 14 sept 2025: 18.500,00 COP/mes</p>
             </div>
             <hr className="border border-gray-300 my-8"/>
