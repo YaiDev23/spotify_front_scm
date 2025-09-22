@@ -63,7 +63,7 @@ export const Landing = () => {
             <div className="text-white relative bottom-20 space-y-8">
               <div className="space-y-4 ">
                 <h1 className="text-5xl font-bold leading-tight">
-                  Escucha sin límites. Prueba 1 mes de Premium Individual por $ 0.
+                  Escucha sin límites. Prueba 10 meses de Premium Individual por $ 0.
                 </h1>
                 <p>Después, solo cuesta $ 18.500 por mes. Cancela cuando quieras.</p>
               </div>
