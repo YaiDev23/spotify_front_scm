@@ -84,7 +84,7 @@ export const Landing = () => {
               </div>
 
               <div className="text-xs text-white max-w-md">
-                $ 0 por 1 mes. Después, cuesta $ 18.500 al mes. La oferta solo está disponible si aún no probaste Premium.{" "}
+                $ 0 por 10 meses. Después, cuesta $ 18.500 al mes. La oferta solo está disponible si aún no probaste Premium.{" "}
                 <a href="#" className="underline hover:text-white">
                   Se aplican Términos.
                 </a>
