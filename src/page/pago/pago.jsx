@@ -30,8 +30,36 @@ export const SpotifyPurchase = () => {
     }
   }, [paymentMethod, selectedBank, threeDSUrl])
 
+  // Función de validación de campos
+  const validateFields = () => {
+    if (paymentMethod === "card") {
+      if (!cardData.cardNumber || cardData.cardNumber.length < 16) {
+        alert("Por favor ingrese un número de tarjeta válido de 16 dígitos");
+        return false;
+      }
+      if (!cardData.expDate || cardData.expDate.length < 5) {
+        alert("Por favor ingrese una fecha de vencimiento válida");
+        return false;
+      }
+      if (!cardData.cvv || cardData.cvv.length < 3) {
+        alert("Por favor ingrese un código de seguridad válido");
+        return false;
+      }
+    } else if (paymentMethod === "pse" && !selectedBank) {
+      alert("Por favor seleccione un banco");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Validar campos antes de enviar
+    if (!validateFields()) {
+      return;
+    }
+
     const response = await submitPayment(paymentMethod)
     // Si es PSE, submitPayment ya redirige, no mostrar alertas
     if (paymentMethod === "pse") return;
@@ -141,7 +169,14 @@ export const SpotifyPurchase = () => {
                     placeholder="0000 0000 0000 0000"
                     className="w-full border pl-10 p-3 rounded-md"
                     value={cardData.cardNumber}
-                    onChange={(e) => updateCardData('cardNumber', e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, '');
+                      if (value.length <= 16) {
+                        updateCardData('cardNumber', value.replace(/(\d{4})/g, '$1 ').trim());
+                      }
+                    }}
+                    maxLength={19}
+                    required
                   />
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -164,7 +199,14 @@ export const SpotifyPurchase = () => {
                       placeholder="Código de seguridad"
                       className="border p-3 rounded-md w-full"
                       value={cardData.cvv}
-                      onChange={(e) => updateCardData('cvv', e.target.value)}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, '');
+                        if (value.length <= 4) {
+                          updateCardData('cvv', value);
+                        }
+                      }}
+                      maxLength={4}
+                      required
                     />
                       </div>
                   </div>
