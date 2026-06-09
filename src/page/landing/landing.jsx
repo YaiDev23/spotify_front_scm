@@ -73,7 +73,7 @@ export const Landing = () => {
                   <button
                     className="bg-[#FFD2D7] hover:bg-[#FFD2D7] text-black px-8 py-3 rounded-full text-base font-bold"
                     >
-                    Empezar
+                    Probar 6 meses por $4.900
                   </button>
                 </Link>
                 <button

