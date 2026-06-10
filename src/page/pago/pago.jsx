@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Visa from "./img/visa-logo-generic.png"
+import VisaLogo from "./img/visa.svg"
+import MastercardLogo from "./img/mastercard-full.svg"
 import PSELogo from "./img/pse.png"
+import AmericanExpressLogo from "./img/amex.svg"
 import { CreditCard } from "lucide-react"
 import { Link } from "react-router"
 import usePaymentStore from './store'
@@ -154,9 +156,9 @@ export const SpotifyPurchase = () => {
                 <span className="font-medium ml-3">Tarjeta de crédito o débito</span>
               </div>
               <div className="flex gap-2 ml-7 mt-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4" />
-                <img src="https://1000marcas.net/wp-content/uploads/2019/12/logo-Mastercard.png" alt="Mastercard" className="h-4" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png" alt="American Express" className="h-6" />
+                <img src={VisaLogo} alt="Visa" className="h-4" />
+                <img src={MastercardLogo} alt="Mastercard" className="h-4" />
+                <img src={AmericanExpressLogo} alt="American Express" className="h-6" />
               </div>
 
               {/* Formulario visible solo si está seleccionado */}
