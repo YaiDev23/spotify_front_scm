@@ -116,13 +116,13 @@ export const SpotifyPurchase = () => {
                       <p className="text-sm text-gray-600">1 cuenta Premium</p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-semibold">0,00 COP</div>
-                      <div className="text-sm text-gray-600">Por 10 meses</div>
+                      <div className="text-2xl font-semibold">4.900 COP</div>
+                      <div className="text-sm text-gray-600">Por 6 meses</div>
                     </div>
                   </div>
                   <div className="text-sm text-gray-600 space-y-1">
-                    <p>• Hoy: 10 meses por 0,00 COP</p>
-                    <p>• <strong> A partir del 14 sept 2025: </strong> 18.500,00 COP/mes</p>
+                    <p>• Hoy: 6 meses por 4.900 COP</p>
+                    <p>• <strong> A partir del 14 sept 2025: </strong> 18.504.900 COP/mes</p>
                     <p>• Te enviaremos un recordatorio 7 días antes del cobro.</p>
                     <p>
                       • Cancela cuando quieras online.{" "}
@@ -280,16 +280,16 @@ export const SpotifyPurchase = () => {
                   <p className="font-semibold text-black">Premium individual</p>
             
               </span>
-              <span className="text-xl font-semibold">0,00 COP</span>
+              <span className="text-xl font-semibold">4.900 COP</span>
             </div>
             <div className="mt-3 ml-4">
-                <p className="text-gray-600">Hoy: 10 meses por 0,00 COP</p>
-                <p className="text-gray-600">A partir del 14 sept 2025: 18.500,00 COP/mes</p>
+                <p className="text-gray-600">Hoy: 6 meses por 4.900 COP</p>
+                <p className="text-gray-600">A partir del 14 sept 2025: 18.504.900 COP/mes</p>
             </div>
             <hr className="border border-gray-300 my-8"/>
             <div className="flex justify-between mt-4">
               <span className="text-black font-bold text-base">Total Ahora</span>
-              <span className="text-xl font-bold">0,00 COP</span>
+              <span className="text-xl font-bold">4.900 COP</span>
             </div>
           </div>
         </div>
